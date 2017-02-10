@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<h2>Index</h2>
+<div>
+    <label>Enter StudentID:</label><input type="text" id="stuid" />
+    <input type="button" id="getbtn"  value="GET"/>
+</div>
+<div>
+    <table>
+        <tr><td><th>StudentID</th><th>StudentName</th></td></tr>
+    </table>
+
+</div>
+<script>
+
+    $("#getbtn").on('click', function () {
+
+        var id=$("#stuid").val();
+       
+            
+        //function GetAllEmployees() {
+        jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:53309/api/values/'+id,
+            type: 'GET',
+            dataType: 'json',
+            //contentType: 'application/json;',
+            success: function (data) {
+                debugger;
+                console.log(data);
+              
+            },
+            error: function (x, y, z) {
+                debugger;
+                console.log(x, y, z);
+            }
+        });
+    });
+    //});
+</script>
